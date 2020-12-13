@@ -11,4 +11,7 @@ func main() {
 
 	decoder := calendar.NewDecoderBoard()
 	fmt.Println(decoder)
+
+	calendar := calendar.NewCalendar()
+	fmt.Println(calendar)
 }

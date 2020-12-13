@@ -2,26 +2,26 @@ package calendar
 
 import "image"
 
-type DecoderStripeIcon string
+type Icon string
 type DecoderStripeColor string
 type DecoderDirection image.Point
 
 type DecoderStripe struct {
 	directions []DecoderDirection
-	icons      []DecoderStripeIcon
+	icons      []Icon
 }
 
 const (
-	DecoderIconPlus     DecoderStripeIcon = "Plus"
-	DecoderIconRue      DecoderStripeIcon = "Rue"
-	DecoderIconHexagon  DecoderStripeIcon = "Hexagon"
-	DecoderIconCircle   DecoderStripeIcon = "Circle"
-	DecoderIconStar     DecoderStripeIcon = "Star"
-	DecoderIconMoon     DecoderStripeIcon = "Moon"
-	DecoderIconTriangle DecoderStripeIcon = "Triangle"
-	DecoderIconL        DecoderStripeIcon = "L"
-	DecoderIconY        DecoderStripeIcon = "Y"
-	DecoderIconSquare   DecoderStripeIcon = "Square"
+	IconPlus     Icon = "Plus"
+	IconRue      Icon = "Rue"
+	IconHexagon  Icon = "Hexagon"
+	IconCircle   Icon = "Circle"
+	IconStar     Icon = "Star"
+	IconMoon     Icon = "Moon"
+	IconTriangle Icon = "Triangle"
+	IconL        Icon = "L"
+	IconY        Icon = "Y"
+	IconSquare   Icon = "Square"
 
 	DecoderStripeRed    DecoderStripeColor = "red"
 	DecoderStripeBlue   DecoderStripeColor = "blue"
@@ -49,11 +49,11 @@ func NewDecoderBoard() DecoderBoard {
 		decoderStripes: map[DecoderStripeColor]DecoderStripe{
 			DecoderStripeRed: {
 				directions: []DecoderDirection{RightDown, LeftUp, RightUp, LeftDown, Up, Down, Right, Left, RightDown, LeftUp},
-				icons:      []DecoderStripeIcon{DecoderIconSquare, DecoderIconY, DecoderIconL, DecoderIconTriangle, DecoderIconMoon, DecoderIconStar, DecoderIconCircle, DecoderIconHexagon, DecoderIconRue, DecoderIconPlus},
+				icons:      []Icon{IconSquare, IconY, IconL, IconTriangle, IconMoon, IconStar, IconCircle, IconHexagon, IconRue, IconPlus},
 			},
 			DecoderStripeBlue: {
 				directions: []DecoderDirection{Right, Left, RightDown, LeftUp, RightUp, LeftDown, Up, Down, Right, Left},
-				icons:      []DecoderStripeIcon{DecoderIconPlus, DecoderIconRue, DecoderIconHexagon, DecoderIconCircle, DecoderIconStar, DecoderIconMoon, DecoderIconTriangle, DecoderIconL, DecoderIconY, DecoderIconSquare},
+				icons:      []Icon{IconPlus, IconRue, IconHexagon, IconCircle, IconStar, IconMoon, IconTriangle, IconL, IconY, IconSquare},
 			},
 			DecoderStripeYellow: {
 				directions: []DecoderDirection{Up, Down, Right, Left, RightDown, LeftUp, RightUp, LeftDown, Up, Down},

@@ -21,8 +21,9 @@ func NewSolver(decoderBoard calendar.DecoderBoard, calendar calendar.Calendar) *
 }
 
 // Solve the calendar up to given day.
-func (s *solver) SolveToDay(day int8) Path {
-	if day > 24 || day < 0 {
+// For example, if day is set to 13, then doors 1 to 13 will be solved.
+func (s *solver) SolveToDay(day uint8) Path {
+	if day > 24 {
 		day = 24
 	}
 
@@ -32,7 +33,7 @@ func (s *solver) SolveToDay(day int8) Path {
 
 // Internally used function to do depth-first traversal.
 // If no path is found, it panics because this should never happen.
-func (s *solver) traverse(p Path, maxDay int8) Path {
+func (s *solver) traverse(p Path, maxDay uint8) Path {
 	if len(p) == int(maxDay) {
 		return p
 	}

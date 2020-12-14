@@ -15,7 +15,7 @@ func main() {
 	calendar := calendar.NewCalendar()
 
 	solver := solver.NewSolver(decoderBoard, calendar)
-	path := solver.Solve()
+	path := solver.SolveToDay(13)
 
 	renderPath(calendar, path)
 }

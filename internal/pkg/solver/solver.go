@@ -20,16 +20,20 @@ func NewSolver(decoderBoard calendar.DecoderBoard, calendar calendar.Calendar) *
 	}
 }
 
-// Solve the calendar.
-func (s *solver) Solve() Path {
-	paths := s.traverse(Path{s.calendar.GetStart()})
+// Solve the calendar up to given day.
+func (s *solver) SolveToDay(day int8) Path {
+	if day > 24 || day < 0 {
+		day = 24
+	}
+
+	paths := s.traverse(Path{s.calendar.GetStart()}, day)
 	return paths
 }
 
 // Internally used function to do depth-first traversal.
 // If no path is found, it panics because this should never happen.
-func (s *solver) traverse(p Path) Path {
-	if len(p) == 13 {
+func (s *solver) traverse(p Path, maxDay int8) Path {
+	if len(p) == int(maxDay) {
 		return p
 	}
 
@@ -45,7 +49,7 @@ func (s *solver) traverse(p Path) Path {
 
 			if doorCoordinates == tail.Add(aggregatedDirection) {
 				p = p.appendPoint(doorCoordinates)
-				return s.traverse(p)
+				return s.traverse(p, maxDay)
 			}
 		}
 	}

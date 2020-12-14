@@ -41,7 +41,7 @@ Output (faked to not spoil you):
   1   2  11  ??  ??  ?? 
 ```
 
-Doors which are not solved yet are marked with `??`
+The numbers/question marks correspond to the doors on the calendar from top left to bottom right. The number is the day at which the door is opened. Doors which are marked with `??` are not part of the day range you provided with `-day`.
 
 ## About the code
 

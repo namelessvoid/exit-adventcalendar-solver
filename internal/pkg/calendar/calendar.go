@@ -2,17 +2,19 @@ package calendar
 
 import "image"
 
-type CalendarDoor struct {
+type calendarDoor struct {
 	icons []icon
 }
 
+// The Calendar is a representation of the physical advent calendar and its doors.
 type Calendar struct {
-	doors map[image.Point]CalendarDoor
+	doors map[image.Point]calendarDoor
 }
 
+// NewCalendar creates a new calendar.
 func NewCalendar() Calendar {
 	return Calendar{
-		doors: map[image.Point]CalendarDoor{
+		doors: map[image.Point]calendarDoor{
 			image.Pt(0, 0): {icons: []icon{iconTriangle, iconTriangle, iconY}},
 			image.Pt(1, 0): {icons: []icon{iconY, iconCircle, iconY}},
 			image.Pt(2, 0): {icons: []icon{iconHexagon, iconTriangle, iconMoon}},
@@ -44,20 +46,24 @@ func NewCalendar() Calendar {
 	}
 }
 
-// Returned icons can be handed over to the decoder. The order of the returned
+// GetIconsOnDoor returns the symbols on a door at given positoin.
+// The returned icons can be handed over to the decoder. The order of the returned
 // icons corresponds to the decoder stripes Yellow, Blue, Red.
 func (c Calendar) GetIconsOnDoor(coordinates image.Point) []icon {
 	return c.doors[coordinates].icons
 }
 
+// GetStart returns the position of the first door.
 func (c Calendar) GetStart() image.Point {
 	return image.Pt(2, 3)
 }
 
+// GetWidth returns the number of doors on the x-axis.
 func (c Calendar) GetWidth() int {
 	return 6
 }
 
+// GetHeight returns the number of doors on the y-axis.
 func (c Calendar) GetHeight() int {
 	return 4
 }

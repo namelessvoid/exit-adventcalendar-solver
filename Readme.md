@@ -2,7 +2,7 @@
 
 This small program can solve the EXIT advent calender released by German publisher Kosmos.
 
-Disclaimer: This is just a project just for fun. Do not use it to really solve the calendar as you will miss the fun of the game :)
+Disclaimer: This is a project just for fun. Do not use it to really solve the calendar as you will miss the fun of the game :)
 
 ## About the game
 

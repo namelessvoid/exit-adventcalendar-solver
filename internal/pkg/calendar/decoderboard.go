@@ -1,63 +1,33 @@
 package calendar
 
-import "image"
-
-type Icon string
-type DecoderStripeColor string
-type DecoderDirection image.Point
-
-type DecoderStripe struct {
-	directions []DecoderDirection
-	icons      []Icon
-}
-
-const (
-	IconPlus     Icon = "Plus"
-	IconRue      Icon = "Rue"
-	IconHexagon  Icon = "Hexagon"
-	IconCircle   Icon = "Circle"
-	IconStar     Icon = "Star"
-	IconMoon     Icon = "Moon"
-	IconTriangle Icon = "Triangle"
-	IconL        Icon = "L"
-	IconY        Icon = "Y"
-	IconSquare   Icon = "Square"
-
-	DecoderStripeRed    DecoderStripeColor = "red"
-	DecoderStripeBlue   DecoderStripeColor = "blue"
-	DecoderStripeYellow DecoderStripeColor = "yellow"
-)
-
-var (
-	Up        = DecoderDirection(image.Pt(0, -1))
-	Down      = DecoderDirection(image.Pt(0, 1))
-	Right     = DecoderDirection(image.Pt(1, 0))
-	Left      = DecoderDirection(image.Pt(-1, 0))
-	RightDown = DecoderDirection(image.Pt(1, 1))
-	LeftUp    = DecoderDirection(image.Pt(-1, -1))
-	RightUp   = DecoderDirection(image.Pt(1, -1))
-	LeftDown  = DecoderDirection(image.Pt(-1, 1))
-)
-
 type DecoderBoard struct {
-	// The decoderStripes are ordered by the f
-	decoderStripes map[DecoderStripeColor]DecoderStripe
+	decoderStripes map[decoderStripeColor]decoderStripe
 }
 
 func NewDecoderBoard() DecoderBoard {
 	return DecoderBoard{
-		decoderStripes: map[DecoderStripeColor]DecoderStripe{
-			DecoderStripeRed: {
-				directions: []DecoderDirection{RightDown, LeftUp, RightUp, LeftDown, Up, Down, Right, Left, RightDown, LeftUp},
-				icons:      []Icon{IconSquare, IconY, IconL, IconTriangle, IconMoon, IconStar, IconCircle, IconHexagon, IconRue, IconPlus},
+		decoderStripes: map[decoderStripeColor]decoderStripe{
+			decoderStripeRed: {
+				directions: []decoderDirection{rightdown, leftup, rightup, leftdown, up, down, right, left, rightdown, leftup},
+				icons:      []icon{iconSquare, iconY, iconL, iconTriangle, iconMoon, iconStar, iconCircle, iconHexagon, iconRue, iconPlus},
 			},
-			DecoderStripeBlue: {
-				directions: []DecoderDirection{Right, Left, RightDown, LeftUp, RightUp, LeftDown, Up, Down, Right, Left},
-				icons:      []Icon{IconPlus, IconRue, IconHexagon, IconCircle, IconStar, IconMoon, IconTriangle, IconL, IconY, IconSquare},
+			decoderStripeBlue: {
+				directions: []decoderDirection{right, left, rightdown, leftup, rightup, leftdown, up, down, right, left},
+				icons:      []icon{iconPlus, iconRue, iconHexagon, iconCircle, iconStar, iconMoon, iconTriangle, iconL, iconY, iconSquare},
 			},
-			DecoderStripeYellow: {
-				directions: []DecoderDirection{Up, Down, Right, Left, RightDown, LeftUp, RightUp, LeftDown, Up, Down},
+			decoderStripeYellow: {
+				directions: []decoderDirection{up, down, right, left, rightdown, leftup, rightup, leftdown, up, down},
+				icons:      []icon{iconPlus, iconRue, iconHexagon, iconCircle, iconStar, iconMoon, iconTriangle, iconL, iconY, iconSquare},
 			},
 		},
+	}
+}
+
+// Icons have to be given in oder Yellow, Blue, Red
+func (d DecoderBoard) GetDirectionByIcons(icons []icon) []decoderDirection {
+	return []decoderDirection{
+		d.decoderStripes[decoderStripeYellow].GetDirectionByIcon(icons[0]),
+		d.decoderStripes[decoderStripeBlue].GetDirectionByIcon(icons[1]),
+		d.decoderStripes[decoderStripeRed].GetDirectionByIcon(icons[2]),
 	}
 }

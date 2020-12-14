@@ -9,9 +9,9 @@ import (
 func main() {
 	fmt.Println("Running solver for exit advent calendar.")
 
-	decoder := calendar.NewDecoderBoard()
-	fmt.Println(decoder)
-
+	decoderBoard := calendar.NewDecoderBoard()
 	calendar := calendar.NewCalendar()
-	fmt.Println(calendar)
+
+	solver := newSolver(decoderBoard, calendar)
+	fmt.Println(solver.solve())
 }

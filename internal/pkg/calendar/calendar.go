@@ -53,3 +53,11 @@ func (c Calendar) GetIconsOnDoor(coordinates image.Point) []icon {
 func (c Calendar) GetStart() image.Point {
 	return image.Pt(2, 3)
 }
+
+func (c Calendar) GetWidth() int {
+	return 6
+}
+
+func (c Calendar) GetHeight() int {
+	return 4
+}

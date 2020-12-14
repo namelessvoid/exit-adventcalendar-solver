@@ -23,7 +23,7 @@ The solver exploits that for each day, only one arrow-and-icon combination is va
    1.2 Get the arrows from the decoder board
    1.3 Starting from the current door, move along the arrows. If it ends on the current door, this door is the solution for the current day.
       1.3.1 Append the currently examined door to the calendar solution
-      1.3.2 If the length of the path equals the number of days, return the path.
+      1.3.2 If the solution is complete, end the traversal and return the solution
       1.3.2 Otherwise continue with step 1.
 ```
 

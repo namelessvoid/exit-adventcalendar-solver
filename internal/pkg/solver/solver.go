@@ -1,4 +1,4 @@
-package main
+package solver
 
 import (
 	"image"
@@ -13,7 +13,7 @@ type solver struct {
 }
 
 // Create a new solver with given decoder board and calendar.
-func newSolver(decoderBoard calendar.DecoderBoard, calendar calendar.Calendar) *solver {
+func NewSolver(decoderBoard calendar.DecoderBoard, calendar calendar.Calendar) *solver {
 	return &solver{
 		decoderBoard: decoderBoard,
 		calendar:     calendar,
@@ -21,7 +21,7 @@ func newSolver(decoderBoard calendar.DecoderBoard, calendar calendar.Calendar) *
 }
 
 // Solve the calendar.
-func (s *solver) solve() path {
+func (s *solver) Solve() path {
 	paths := s.traverse(path{s.calendar.GetStart()})
 	return paths
 }

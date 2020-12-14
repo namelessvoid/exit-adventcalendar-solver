@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/namelessvoid/exit-solver/internal/pkg/calendar"
+	"github.com/namelessvoid/exit-solver/internal/pkg/solver"
 )
 
 func main() {
@@ -12,6 +13,6 @@ func main() {
 	decoderBoard := calendar.NewDecoderBoard()
 	calendar := calendar.NewCalendar()
 
-	solver := newSolver(decoderBoard, calendar)
-	fmt.Println(solver.solve())
+	solver := solver.NewSolver(decoderBoard, calendar)
+	fmt.Println(solver.Solve())
 }

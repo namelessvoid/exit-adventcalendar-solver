@@ -21,14 +21,14 @@ func NewSolver(decoderBoard calendar.DecoderBoard, calendar calendar.Calendar) *
 }
 
 // Solve the calendar.
-func (s *solver) Solve() path {
-	paths := s.traverse(path{s.calendar.GetStart()})
+func (s *solver) Solve() Path {
+	paths := s.traverse(Path{s.calendar.GetStart()})
 	return paths
 }
 
 // Internally used function to do depth-first traversal.
 // If no path is found, it panics because this should never happen.
-func (s *solver) traverse(p path) path {
+func (s *solver) traverse(p Path) Path {
 	if len(p) == 13 {
 		return p
 	}
